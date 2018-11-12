@@ -1,0 +1,56 @@
+#include<iostream>
+using namespace std;
+struct StackNode 
+{ 
+    int data; 
+    struct StackNode* next; 
+}; 
+struct StackNode* newNode(int data) 
+{ 
+    struct StackNode* stackNode = new stackNode; 
+    stackNode->data = data; 
+    stackNode->next = NULL; 
+    return stackNode; 
+} 
+int isEmpty(struct StackNode *root) 
+{ 
+    return !root; 
+} 
+void push(struct StackNode** root, int data) 
+{ 
+    struct StackNode* stackNode = newNode(data); 
+    stackNode->next = *root; 
+    *root = stackNode; 
+    cout<<"pushed to stack "<<data; 
+} 
+  
+int pop(struct StackNode** root) 
+{ 
+    if (isEmpty(*root)) 
+        return INT_MIN; 
+    struct StackNode* temp = *root; 
+    *root = (*root)->next; 
+    int popped = temp->data; 
+    delete temp;
+    return popped; 
+} 
+int peek(struct StackNode* root) 
+{ 
+    if (isEmpty(root)) 
+        return INT_MIN; 
+    return root->data; 
+} 
+int main() 
+{ 
+    struct StackNode* root = NULL; 
+  
+    push(&root, 10); 
+    push(&root, 20); 
+    push(&root, 30); 
+  
+    cout<<"popped from stack "<< pop(&root); 
+  
+    cout<<"Top element is "<< peek(root); 
+  
+    return 0; 
+} 
