@@ -1,0 +1,96 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int array[15];
+    int n;
+    cout<<"Enter the no of element :";
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cout<<"Enter the element : ";
+        cin>>array[i];
+    }
+    while(1)
+    {
+        cout<<endl<<"1. Append";
+        cout<<endl<<"2. Insert";
+        cout<<endl<<"3. delete by value";
+        cout<<endl<<"4. edit";
+        cout<<endl<<"5. display";
+        cout<<endl<<"6. search";
+        cout<<endl<<"7. exit";
+        cout<<endl<<"Enter your choice : ";
+        int c;
+        cin>>c;
+        switch(c)
+        {
+            case 1:
+                cout<<"Enter the new element : ";
+                int d;
+                cin>>d;
+                array[n]=d;
+                n++;
+            break;
+            case 2:
+                cout<<"Enter the position at which you want to insert : ";
+                int pos;
+                cin>>pos;
+                cout<<"Enter the new element : ";
+                cin>>d;
+                pos--;
+                for(int i=d-1;i>=pos;i--)
+                    array[i+1]=array[i];
+                array[pos]=d;
+                d++;
+            break;
+            case 3:
+                cout<<"Enter the value to be search : ";
+                int key;
+                cin>>key;
+                for(pos=0;pos<d;pos++)
+                {
+                    if(array[pos]==key)
+                        break;
+                }
+                if(pos==d)
+                {
+                    cout<<"Search key not found";
+                    break;
+                }
+                for(int i=pos;i<d;i++)
+                    array[i]=array[i+1];
+                d--;
+            break;
+            case 4:
+                cout<<"Enter the position to be edit : ";
+                cin>>pos;
+                cout<<"Enter the new value for old position : ";
+                cin>>array[pos-1];
+            break;
+            case 5:
+                cout<<endl;
+                for(int i=0;i<d;i++)
+                    cout<<endl<<"The element is : "<<array[i];
+            break;
+            case 6:
+                cout<<"Enter the value to be search : ";
+                cin>>key;
+                for(pos=0;pos<d;pos++)
+                {
+                    if(array[pos]==key)
+                        break;
+                }
+                if(pos==d)
+                {
+                    cout<<"Search key not found";
+                    break;
+                }
+                cout<<"Search key found at : "<<pos+1;
+            break;
+            case 7:
+                return(0);
+            break;
+        }
+    }
+}
